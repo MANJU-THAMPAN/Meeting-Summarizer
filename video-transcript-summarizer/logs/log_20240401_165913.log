@@ -1,0 +1,90 @@
+[2024-04-01 16:59:14,036] 	INFO 	96 	_internal.py 	_log() 	[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.2:5000
+[2024-04-01 16:59:14,037] 	INFO 	96 	_internal.py 	_log() 	[33mPress CTRL+C to quit[0m
+[2024-04-01 16:59:25,196] 	INFO 	96 	_internal.py 	_log() 	127.0.0.1 - - [01/Apr/2024 16:59:25] "GET / HTTP/1.1" 200 -
+[2024-04-01 16:59:42,818] 	INFO 	41 	video_downloader.py 	_download_youtube() 	Youtube Video downloaded to uploads/ENGLISH SPEECH  MALALA YOUSAFZAI - Nobel Peace Prize (English Subtitles).mp4
+[2024-04-01 16:59:43,791] 	INFO 	46 	generate_subtitle.py 	get_audio() 	Extracting audio from ENGLISH SPEECH  MALALA YOUSAFZAI - Nobel Peace Prize (English Subtitles).mp4...
+[2024-04-01 16:59:47,127] 	INFO 	64 	generate_subtitle.py 	create_subtitles() 	Generating subtitles for ENGLISH SPEECH  MALALA YOUSAFZAI - Nobel Peace Prize (English Subtitles).wav... This might take a while.
+[2024-04-01 17:01:20,137] 	INFO 	20 	summarize.py 	summarize_text() 	initiating summarizer...
+[2024-04-01 17:03:45,628] 	ERROR 	828 	app.py 	log_exception() 	Exception on /transcribe [POST]
+Traceback (most recent call last):
+  File "D:\video-transcript-summarizer\videosum\components\summarize.py", line 23, in summarize_text
+    model = AutoModelForSeq2SeqLM.from_pretrained(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\transformers\models\auto\auto_factory.py", line 561, in from_pretrained
+    return model_class.from_pretrained(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\transformers\modeling_utils.py", line 3193, in from_pretrained
+    resolved_archive_file = cached_file(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\transformers\utils\hub.py", line 398, in cached_file
+    resolved_file = hf_hub_download(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\huggingface_hub\utils\_validators.py", line 118, in _inner_fn
+    return fn(*args, **kwargs)
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\huggingface_hub\file_download.py", line 1492, in hf_hub_download
+    http_get(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\huggingface_hub\file_download.py", line 550, in http_get
+    temp_file.write(chunk)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\tempfile.py", line 483, in func_wrapper
+    return func(*args, **kwargs)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\video-transcript-summarizer\app.py", line 63, in upload_file
+    summary_text = summarize_text(transcript_text)
+  File "D:\video-transcript-summarizer\videosum\components\summarize.py", line 38, in summarize_text
+    raise CustomException(e, sys)
+videosum.exception.CustomException: Error occurred in script: [ D:\video-transcript-summarizer\videosum\components\summarize.py ] at line number: [23] error message: [[Errno 28] No space left on device] 
+[2024-04-01 17:03:45,931] 	INFO 	96 	_internal.py 	_log() 	127.0.0.1 - - [01/Apr/2024 17:03:45] "[35m[1mPOST /transcribe HTTP/1.1[0m" 500 -
+[2024-04-01 17:05:10,711] 	INFO 	41 	video_downloader.py 	_download_youtube() 	Youtube Video downloaded to uploads/ENGLISH SPEECH  MALALA YOUSAFZAI - Nobel Peace Prize (English Subtitles).mp4
+[2024-04-01 17:05:11,559] 	INFO 	46 	generate_subtitle.py 	get_audio() 	Extracting audio from ENGLISH SPEECH  MALALA YOUSAFZAI - Nobel Peace Prize (English Subtitles).mp4...
+[2024-04-01 17:05:12,414] 	INFO 	96 	_internal.py 	_log() 	127.0.0.1 - - [01/Apr/2024 17:05:12] "GET / HTTP/1.1" 200 -
+[2024-04-01 17:05:14,822] 	INFO 	64 	generate_subtitle.py 	create_subtitles() 	Generating subtitles for ENGLISH SPEECH  MALALA YOUSAFZAI - Nobel Peace Prize (English Subtitles).wav... This might take a while.
+[2024-04-01 17:06:38,478] 	INFO 	20 	summarize.py 	summarize_text() 	initiating summarizer...
+[2024-04-01 17:06:41,600] 	ERROR 	828 	app.py 	log_exception() 	Exception on /transcribe [POST]
+Traceback (most recent call last):
+  File "D:\video-transcript-summarizer\videosum\components\summarize.py", line 23, in summarize_text
+    model = AutoModelForSeq2SeqLM.from_pretrained(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\transformers\models\auto\auto_factory.py", line 561, in from_pretrained
+    return model_class.from_pretrained(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\transformers\modeling_utils.py", line 3193, in from_pretrained
+    resolved_archive_file = cached_file(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\transformers\utils\hub.py", line 398, in cached_file
+    resolved_file = hf_hub_download(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\huggingface_hub\utils\_validators.py", line 118, in _inner_fn
+    return fn(*args, **kwargs)
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\huggingface_hub\file_download.py", line 1492, in hf_hub_download
+    http_get(
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\huggingface_hub\file_download.py", line 550, in http_get
+    temp_file.write(chunk)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\tempfile.py", line 483, in func_wrapper
+    return func(*args, **kwargs)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\video-transcript-summarizer\venvapp\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\video-transcript-summarizer\app.py", line 63, in upload_file
+    summary_text = summarize_text(transcript_text)
+  File "D:\video-transcript-summarizer\videosum\components\summarize.py", line 38, in summarize_text
+    raise CustomException(e, sys)
+videosum.exception.CustomException: Error occurred in script: [ D:\video-transcript-summarizer\videosum\components\summarize.py ] at line number: [23] error message: [[Errno 28] No space left on device] 
+[2024-04-01 17:06:41,603] 	INFO 	96 	_internal.py 	_log() 	127.0.0.1 - - [01/Apr/2024 17:06:41] "[35m[1mPOST /transcribe HTTP/1.1[0m" 500 -
+[2024-04-01 17:07:05,135] 	INFO 	96 	_internal.py 	_log() 	127.0.0.1 - - [01/Apr/2024 17:07:05] "GET / HTTP/1.1" 200 -
